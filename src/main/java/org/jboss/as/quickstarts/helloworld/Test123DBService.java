@@ -38,7 +38,7 @@ public class Test123DBService {
 	      
 	   try {  
 		   ic = new InitialContext();  
-		   ds = (DataSource) ic.lookup("java:jboss/datasources/JoNrhq");  
+		   ds = (DataSource) ic.lookup("java:jboss/datasources/PostgreSQLDS");  
 		   con = ds.getConnection();  
 		   stmt = con.createStatement();  
 		   ResultSet rs = stmt.executeQuery("select * from " + tableName);  
