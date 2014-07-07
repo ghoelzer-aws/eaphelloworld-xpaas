@@ -136,6 +136,9 @@
 						<!--<validate-on-match>true</validate-on-match>-->
 					</validation>
 					<pool>
+						<min-pool-size>8</min-pool-size>
+						<max-pool-size>16</max-pool-size>
+						<prefill/>
 						<flush-strategy>IdleConnections</flush-strategy>
 						<allow-multiple-users/>
 					</pool>
