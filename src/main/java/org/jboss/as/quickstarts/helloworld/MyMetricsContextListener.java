@@ -16,6 +16,10 @@
  */
 package org.jboss.as.quickstarts.helloworld;
 import com.codahale.metrics.*;
+import com.codahale.metrics.jvm.FileDescriptorRatioGauge;
+import com.codahale.metrics.jvm.GarbageCollectorMetricSet;
+import com.codahale.metrics.jvm.MemoryUsageGaugeSet;
+import com.codahale.metrics.jvm.ThreadStatesGaugeSet;
 import com.codahale.metrics.servlets.MetricsServlet.ContextListener;
 
 /**
@@ -25,7 +29,18 @@ import com.codahale.metrics.servlets.MetricsServlet.ContextListener;
  * 
  */
 public class MyMetricsContextListener extends ContextListener {
-    public static final MetricRegistry REGISTRY = new MetricRegistry();
+//    public static final MetricRegistry REGISTRY = new MetricRegistry();
+    public static MetricRegistry REGISTRY = null;
+    {
+    	MetricRegistry metricsRegistry = new MetricRegistry();
+        
+    	metricsRegistry.register("jvm.gc", new GarbageCollectorMetricSet());
+    	metricsRegistry.register("jvm.memory", new MemoryUsageGaugeSet());
+    	metricsRegistry.register("jvm.thread-states", new ThreadStatesGaugeSet());
+    	metricsRegistry.register("jvm.fd-usage", new FileDescriptorRatioGauge());
+    	
+    	REGISTRY = metricsRegistry;
+    }
 
     @Override
     protected MetricRegistry getMetricRegistry() {
