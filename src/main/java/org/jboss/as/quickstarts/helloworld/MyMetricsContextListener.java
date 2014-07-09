@@ -16,7 +16,7 @@
  */
 package org.jboss.as.quickstarts.helloworld;
 import com.codahale.metrics.*;
-import com.codahale.metrics.jvm.*;
+import com.codahale.metrics.servlets.MetricsServlet.ContextListener;
 
 /**
  * A simple Coda Hale Metrics Implementation
@@ -24,15 +24,11 @@ import com.codahale.metrics.jvm.*;
  * @author Greg Hoelzer
  * 
  */
-enum Metrics {
-    INSTANCE;
-    private Metrics() {
-    	MetricRegistry metricsRegistry = new MetricRegistry();
-        
-    	metricsRegistry.register("jvm.gc", new GarbageCollectorMetricSet());
-    	metricsRegistry.register("jvm.memory", new MemoryUsageGaugeSet());
-    	metricsRegistry.register("jvm.thread-states", new ThreadStatesGaugeSet());
-    	metricsRegistry.register("jvm.fd-usage", new FileDescriptorRatioGauge());
-        
+public class MyMetricsContextListener extends ContextListener {
+    public static final MetricRegistry REGISTRY = new MetricRegistry();
+
+    @Override
+    protected MetricRegistry getMetricRegistry() {
+        return REGISTRY;
     }
 }

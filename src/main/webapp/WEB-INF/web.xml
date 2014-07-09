@@ -21,10 +21,6 @@
  <servlet>
   <servlet-name>metrics</servlet-name>
   <servlet-class>com.codahale.metrics.servlets.MetricsServlet</servlet-class>
-  <init-param>
-   <param-name>com.codahale.metrics.servlets.MetricsServlet.registry</param-name>
-   <param-value>Metrics.metricRegistry</param-value>
-  </init-param>
   <enabled>true</enabled>
  </servlet>
  <servlet-mapping>
