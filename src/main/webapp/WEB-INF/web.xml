@@ -18,6 +18,11 @@
   <servlet-class>org.jboss.as.quickstarts.helloworld.HelloWorldDBServlet</servlet-class>
   <enabled>true</enabled>
  </servlet>
+ <servlet>
+  <servlet-name>metrics</servlet-name>
+  <servlet-class>com.codahale.metrics.servlets.MetricsServlet</servlet-class>
+  <enabled>true</enabled>
+ </servlet>
  <servlet-mapping>
   <servlet-name>health</servlet-name>
   <url-pattern>/health</url-pattern>
@@ -29,5 +34,9 @@
  <servlet-mapping>
   <servlet-name>jboss-as-helloworldDB</servlet-name>
   <url-pattern>/jboss-as-helloworldDB</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>metrics</servlet-name>
+  <url-pattern>metrics/*</url-pattern>
  </servlet-mapping>
 </web-app>
