@@ -94,7 +94,7 @@ require 'net/http'
 # occurs.  In other words, if a scale up event has happened, don't issue
 # a scale down event until after 600 seconds has elapsed
 #
-FLAP_PROTECTION_TIME_SECONDS = 600
+FLAP_PROTECTION_TIME_SECONDS = 60
 
 HAPROXY_CONF_DIR=File.join(ENV['OPENSHIFT_HAPROXY_DIR'], "conf")
 HAPROXY_RUN_DIR=File.join(ENV['OPENSHIFT_HAPROXY_DIR'], "run")
@@ -128,7 +128,7 @@ class Haproxy
     # targeting so it can scale up and down to match that ratio.
     #
     MAX_SESSIONS_PER_GEAR = ENV['OPENSHIFT_MAX_SESSIONS_PER_GEAR'] ? ENV['OPENSHIFT_MAX_SESSIONS_PER_GEAR'].to_f : 8.0
-    MOVING_AVERAGE_SAMPLE_SIZE = 10
+    MOVING_AVERAGE_SAMPLE_SIZE = 2
 
     attr_accessor :gear_count, :sessions, :sessions_per_gear, :session_capacity_pct, :gear_namespace, :last_scale_up_time, :last_scale_error_time, :previous_stats, :status_urls_config_mtime, :stats, :previous_remote_sessions_counts
 
