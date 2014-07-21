@@ -127,7 +127,9 @@ class Haproxy
     # simply tells haproxy_ctld.rb how many connections per gear we are
     # targeting so it can scale up and down to match that ratio.
     #
-    MAX_SESSIONS_PER_GEAR = ENV['OPENSHIFT_MAX_SESSIONS_PER_GEAR'] ? ENV['OPENSHIFT_MAX_SESSIONS_PER_GEAR'].to_f : 8.0
+    # -- set to 4.0 for testing purposes --
+    #
+    MAX_SESSIONS_PER_GEAR = ENV['OPENSHIFT_MAX_SESSIONS_PER_GEAR'] ? ENV['OPENSHIFT_MAX_SESSIONS_PER_GEAR'].to_f : 4.0
     MOVING_AVERAGE_SAMPLE_SIZE = 2
 
     attr_accessor :gear_count, :sessions, :sessions_per_gear, :session_capacity_pct, :gear_namespace, :last_scale_up_time, :last_scale_error_time, :previous_stats, :status_urls_config_mtime, :stats, :previous_remote_sessions_counts
