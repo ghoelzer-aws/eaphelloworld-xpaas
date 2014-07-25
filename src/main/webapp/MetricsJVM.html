@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Metrics - Application JVM</title>
+</head>
+<body>
+<!-- Include JQuery, only one time in the page header -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+$.getJSON("/metrics",function(data) {         
+  $.each(data.collection, function(i,e) {
+  var lmod = formatDate(new Date(e["lmodified"]));
+  var row = "<tr><td>"+e["jvm.memory.heap.used"]+"</td><td>"+lmod+"</td>"
+  $("#dpub tr:first").after(row);
+  });
+});
+</script>
+
+<table id="dpub" style="width:100%;">
+ <tr>
+   <th style="width:20%;">jvm.memory.heap.used</th>
+   <th>Last modified</th>
+ </tr>
+</table>
+</body>
+</html>
