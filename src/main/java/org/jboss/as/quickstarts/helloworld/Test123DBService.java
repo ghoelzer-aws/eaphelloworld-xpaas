@@ -56,7 +56,7 @@ public class Test123DBService {
 		   }  
 	   } 
 	   
-      return "Hello Travelers PostgresDB " + tableName + " " +OutputHTML;
+      return "Hello Travelers PostgresSQL " + tableName + " " +OutputHTML;
    }
 
 }

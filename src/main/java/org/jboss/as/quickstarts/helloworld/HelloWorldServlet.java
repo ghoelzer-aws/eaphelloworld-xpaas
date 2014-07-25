@@ -47,8 +47,7 @@ public class HelloWorldServlet extends HttpServlet {
 
    static String PAGE_FOOTER = "</body></html>";
 
-   @Inject
-   HelloService helloService;
+   @Inject HelloService helloService;
 
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
