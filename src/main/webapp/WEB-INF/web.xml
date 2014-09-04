@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app metadata-complete="false" version="3.0"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+ <listener>
+  <listener-class>org.jboss.as.quickstarts.helloworld.MyMetricsContextListener</listener-class>
+ </listener>
+ <servlet>
+  <servlet-name>health</servlet-name>
+  <jsp-file>/health.jsp</jsp-file>
+ </servlet>
+ <servlet>
+  <display-name>jboss-as-helloworld</display-name>
+  <servlet-name>jboss-as-helloworld</servlet-name>
+  <servlet-class>org.jboss.as.quickstarts.helloworld.HelloWorldServlet</servlet-class>
+  <enabled>true</enabled>
+ </servlet>
+ <servlet>
+  <display-name>jboss-as-helloworldDB</display-name>
+  <servlet-name>jboss-as-helloworldDB</servlet-name>
+  <servlet-class>org.jboss.as.quickstarts.helloworld.HelloWorldDBServlet</servlet-class>
+  <enabled>true</enabled>
+ </servlet>
+ <servlet>
+  <servlet-name>metrics</servlet-name>
+  <servlet-class>com.codahale.metrics.servlets.MetricsServlet</servlet-class>
+  <enabled>true</enabled>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>health</servlet-name>
+  <url-pattern>/health</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>jboss-as-helloworld</servlet-name>
+  <url-pattern>/jboss-as-helloworld</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>jboss-as-helloworldDB</servlet-name>
+  <url-pattern>/jboss-as-helloworldDB</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>metrics</servlet-name>
+  <url-pattern>/metrics/*</url-pattern>
+ </servlet-mapping>
+</web-app>
