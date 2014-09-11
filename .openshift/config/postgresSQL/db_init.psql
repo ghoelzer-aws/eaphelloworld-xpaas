@@ -1,0 +1,9 @@
+CREATE TABLE TEST123(
+   ID INT PRIMARY KEY     NOT NULL,
+   NAME           TEXT    NOT NULL,
+   AGE            INT     NOT NULL,
+   ADDRESS        CHAR(50),
+   SALARY         REAL
+);
+INSERT INTO TEST123 VALUES (101, ‘Somebody’, 23, ‘Some Street, MN 53412’, 1.00);
+
