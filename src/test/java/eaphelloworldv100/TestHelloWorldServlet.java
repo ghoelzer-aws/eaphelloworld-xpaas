@@ -35,7 +35,7 @@ public class TestHelloWorldServlet {
 
     @Test
     public void should_create_greeting() {
-        Assert.assertEquals("Hello Earthling! Version 1.01",
+        Assert.assertEquals("Hello Earthling! Version 1.02",
             greeter.createHelloMessage("Earthling"));
         System.out.println(greeter.createHelloMessage("Earthling"));
     }

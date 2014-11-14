@@ -4,7 +4,7 @@
 	<groupId>com.redhat.ghoelzer.eaphelloworldv100</groupId>
 	<artifactId>eaphelloworldv100</artifactId>
 	<packaging>war</packaging>
-	<version>1.01</version>
+	<version>1.02</version>
 	<name>eaphelloworldv100</name>
 	<repositories>
 		<repository>
