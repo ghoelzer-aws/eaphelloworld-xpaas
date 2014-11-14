@@ -29,6 +29,10 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</pluginRepository>
+		<pluginRepository>
+        	<id>smartbear-sweden-plugin-repository</id>
+        	<url>http://www.soapui.org/repository/maven2/</url>
+    	</pluginRepository>
 	</pluginRepositories>
 	<!-- 
 	<properties>
@@ -82,8 +86,8 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
        <version.war.plugin>2.1.1</version.war.plugin>
 
        <!-- maven-compiler-plugin -->
-       <maven.compiler.target>1.6</maven.compiler.target>
-       <maven.compiler.source>1.6</maven.compiler.source>
+       <maven.compiler.target>1.7</maven.compiler.target>
+       <maven.compiler.source>1.7</maven.compiler.source>
        <metrics.version>3.0.1</metrics.version>
 	   </properties>
 
@@ -114,6 +118,46 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
          	<artifactId>metrics-servlets</artifactId>
          	<version>${metrics.version}</version>
          </dependency>
+         <dependency>
+            <groupId>org.jboss.arquillian</groupId>
+            <artifactId>arquillian-bom</artifactId>
+            <version>1.1.5.Final</version>
+            <scope>import</scope>
+            <type>pom</type>
+        </dependency>
+         <dependency>
+         	<groupId>junit</groupId>
+         	<artifactId>junit</artifactId>
+         	<version>4.8.1</version>
+         	<scope>import</scope>
+            <type>pom</type>
+         </dependency>
+    <dependency>
+        <groupId>org.jboss.spec.javax.ejb</groupId>
+        <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+        <scope>test</scope>
+        <version>1.0.2.Final</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.transaction</groupId>
+        <artifactId>jta</artifactId>
+        <scope>test</scope>
+        <version>1.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.validation</groupId>
+        <artifactId>validation-api</artifactId>
+        <version>1.0.0.GA</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.el</groupId>
+        <artifactId>javax.el-api</artifactId>
+        <version>3.0.0</version>
+        <scope>test</scope>
+    </dependency>
       </dependencies>
    </dependencyManagement>
 
@@ -151,6 +195,59 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
       	<groupId>com.codahale.metrics</groupId>
       	<artifactId>metrics-servlets</artifactId>
       </dependency>
+ 	<dependency>
+    	<groupId>org.jboss.arquillian.junit</groupId>
+    	<artifactId>arquillian-junit-container</artifactId>
+    	<scope>test</scope>
+	</dependency>
+	<dependency>
+    <groupId>org.jboss.arquillian.container</groupId>
+    <artifactId>arquillian-weld-ee-embedded-1.1</artifactId>
+    <version>1.0.0.CR3</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.jboss.weld</groupId>
+    <artifactId>weld-core</artifactId>
+    <version>1.1.5.Final</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-simple</artifactId>
+    <version>1.6.4</version>
+    <scope>test</scope>
+</dependency>
+   	<dependency>
+   		<groupId>junit</groupId>
+   		<artifactId>junit</artifactId>
+   		<version>4.8.1</version>
+   	</dependency>
+ <dependency>
+	<groupId>javax.ejb</groupId>
+	<artifactId>ejb-api</artifactId>
+	<version>3.0</version>
+</dependency>
+ <dependency>
+ 	<groupId>org.jboss.spec.javax.ejb</groupId>
+ 	<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+ 	<version>1.0.2.Final-redhat-2</version>
+ </dependency>
+ <dependency>
+ 	<groupId>org.jboss.spec.javax.transaction</groupId>
+ 	<artifactId>jboss-transaction-api_1.1_spec</artifactId>
+ 	<version>1.0.1.Final-redhat-2</version>
+ </dependency>
+ <dependency>
+ 	<groupId>javax.validation</groupId>
+ 	<artifactId>validation-api</artifactId>
+ 	<version>1.0.0.GA-redhat-2</version>
+ </dependency>
+ <dependency>
+ 	<groupId>org.jboss.spec.javax.el</groupId>
+ 	<artifactId>jboss-el-api_2.2_spec</artifactId>
+ 	<version>1.0.2.Final-redhat-1</version>
+ </dependency>
    </dependencies>
 	
 	<profiles>
@@ -174,6 +271,10 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
 							<warName>ROOT</warName>
 						</configuration>
 					</plugin>
+        			<plugin>  
+            			<artifactId>maven-surefire-plugin</artifactId>  
+            			<version>2.9</version>  
+         			</plugin>  
 				</plugins>
 			</build>
 		</profile>
