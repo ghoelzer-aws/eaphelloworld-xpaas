@@ -16,8 +16,10 @@
  */
 package org.jboss.as.quickstarts.helloworld;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -51,11 +53,15 @@ public class HelloWorldServlet extends HttpServlet {
 
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      resp.setContentType("text/html");
+      /* Get Red Hat Linux Version */
+	  @SuppressWarnings("resource")
+	  String rhel_release = new Scanner(new File("/etc/redhat-release")).useDelimiter("\\Z").next();
+	  
+	  resp.setContentType("text/html");
       PrintWriter writer = resp.getWriter();
       writer.println(PAGE_HEADER);
       writer.println("<h1>" + helloService.createHelloMessage("World") + "</h1>");
-      writer.println("<h2>" + System.getProperty("os.name") + " " + System.getProperty("os.version") + "</h2>");
+      writer.println("<h2>" + rhel_release + " " + System.getProperty("os.version") + "</h2>");
       writer.println("<h2>" + "Java Version: " + System.getProperty("java.version") + "</h2>");
       writer.println(PAGE_FOOTER);
       writer.close();
