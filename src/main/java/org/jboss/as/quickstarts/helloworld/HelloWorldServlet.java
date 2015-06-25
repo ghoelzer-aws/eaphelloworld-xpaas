@@ -60,7 +60,7 @@ public class HelloWorldServlet extends HttpServlet {
 	  resp.setContentType("text/html");
       PrintWriter writer = resp.getWriter();
       writer.println(PAGE_HEADER);
-      writer.println("<h1>" + helloService.createHelloMessage("Summit 2015") + "</h1>");
+      writer.println("<h1>" + helloService.createHelloMessage("It doesn't matter") + "</h1>");
       writer.println("<h2>" + rhel_release + " " + System.getProperty("os.version") + "</h2>");
       writer.println("<h2>" + "Java Version: " + System.getProperty("java.version") + "</h2>");
       writer.println(PAGE_FOOTER);
